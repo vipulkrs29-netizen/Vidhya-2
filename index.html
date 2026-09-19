@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A Little Something For You ♡</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=Playfair+Display:ital,wght@0,500;1,500;1,600&display=swap');
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:"DM Sans",sans-serif;color:#71333e;background:linear-gradient(135deg,#fff9f5,#fdebed)}
+button{font:inherit}.app{height:100dvh;position:relative;overflow:hidden}
+.music{position:fixed;z-index:50;right:18px;top:18px;width:48px;height:48px;border-radius:50%;border:1px solid #e4c5c8;background:#fff9f6cc;color:#8f4760;font-size:20px;cursor:pointer}
+.petals{position:absolute;inset:0;pointer-events:none;overflow:hidden}.petal{position:absolute;bottom:-30px;animation:up 11s linear infinite;opacity:.6}
+.petal:nth-child(1){left:5%;font-size:22px}.petal:nth-child(2){left:25%;animation-delay:2s}.petal:nth-child(3){left:48%;animation-delay:5s}.petal:nth-child(4){left:72%;animation-delay:1s}.petal:nth-child(5){left:90%;animation-delay:4s}
+@keyframes up{0%{transform:translateY(0) rotate(0);opacity:0}15%{opacity:.7}100%{transform:translate(25px,-110vh) rotate(300deg);opacity:0}}
+@media(max-width:520px){
+  .screen:nth-child(2){padding:30px 15px 86px;align-items:flex-start}
+  .screen:nth-child(2) h2{font-size:29px}
+  .cards{grid-template-columns:1fr;gap:11px;margin-top:21px}
+  .card{min-height:175px;padding:24px 21px 23px 26px}
+  .quote{font-size:22px}
+  .card p{font-size:16px;line-height:1.7}
+  .note{padding:17px 16px}
+}
+.screens{height:100%;display:flex;transition:transform .7s cubic-bezier(.77,0,.18,1)}
+.screen{min-width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:35px 22px;overflow-y:auto}
+.content{width:min(540px,100%);text-align:center}h1,h2,h3,.quote,.meter-title,.percent{font-family:"Playfair Display",serif}
+.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b26070;margin-bottom:20px}
+h1{font-size:55px;font-style:italic;margin:0 0 18px}h2{font-size:34px;font-style:italic;margin:0 0 8px}
+.lead{font-family:"Playfair Display",serif;font-style:italic;color:#8c676c;font-size:18px;line-height:1.65}
+.sub{font-size:13px;color:#ad888d}.primary{margin-top:30px;border:0;border-radius:999px;padding:16px 32px;color:#fff;background:linear-gradient(100deg,#d86b7e,#a83f58);letter-spacing:1.5px;font-weight:600;cursor:pointer;box-shadow:0 14px 30px #a83f5838}
+.counter{margin-top:38px}.counter-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#ae858b}.counter-num{font-family:"Playfair Display";font-size:34px;color:#bd596d}
+.screen:nth-child(2){align-items:flex-start;padding:48px 18px 110px;overflow-y:auto;overscroll-behavior:contain;scroll-behavior:smooth}.screen:nth-child(2) .content{width:min(760px,100%)}
+.screen:nth-child(2) .content{max-width:760px;margin:auto;padding-bottom:24px}
+.screen:nth-child(2) h2{font-size:33px}
+.cards{display:flex;flex-direction:column;gap:16px;margin-top:28px;text-align:left}
+.card{min-height:175px;background:rgba(255,253,249,.9);border:1px solid rgba(154,77,91,.14);border-radius:19px;padding:21px 19px 19px 23px;position:relative;box-shadow:0 10px 30px rgba(112,49,62,.07);overflow:hidden}
+.card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(#db7486,#9c3f55)}
+.quote{font-size:24px;line-height:1.35;font-style:italic;margin-bottom:12px;font-weight:600;color:#7f3f52}
+.card p{font-size:17px;color:#8f6c72;line-height:1.7;margin:0;font-weight:500}
+.note{margin-top:17px;padding:19px 21px;border-radius:18px;background:rgba(255,241,240,.78);border:1px solid rgba(191,91,111,.18);text-align:center}
+.note p{font-family:"Playfair Display";font-style:italic;font-size:15px;line-height:1.55;margin:0}
+.screen:nth-child(2) .primary{margin-top:20px;padding:15px 30px}
+.meter-card{background:#fffaf7c4;border:1px solid #9a4d5b25;border-radius:28px;padding:34px 27px;box-shadow:0 18px 50px #70313d14}.meter-title{font-size:30px;font-style:italic}.meter-desc{font-size:13px;line-height:1.6;color:#b18e92;margin:10px auto 20px;max-width:360px}.percent{font-size:68px;margin:10px 0 20px}.bar{height:13px;background:#f4d9d3;border-radius:99px;overflow:hidden}.fill{height:100%;width:0;background:linear-gradient(90deg,#e9c59f,#8f3c26);transition:width .65s ease}.status{font-size:12px;color:#a67b80;margin-top:14px;min-height:18px}.result{display:none;margin-top:24px}.result.show{display:block}.broken{font-size:45px}.result h3{font-size:23px;font-style:italic;margin:5px 0}.result p{font-size:13px;line-height:1.7;color:#a67d82}.love{width:100%;margin-top:20px}
+.dots{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:40}.dot{width:8px;height:8px;border-radius:99px;background:#e5bcc3}.dot.active{width:27px;background:#a94258}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="petals"><span class="petal">🌸</span><span class="petal">♡</span><span class="petal">🌷</span><span class="petal">✦</span><span class="petal">🌸</span></div>
+<button class="music" id="music" title="Play music">♫</button>
+<audio id="song" preload="auto" loop>
+  <source src="./assets/song.mp3" type="audio/mpeg">
+</audio>
+
+<div class="screens" id="screens">
+<section class="screen"><div class="content">
+<div class="eyebrow">✦ A little message for you ✦</div>
+<h1>Vidhya</h1>
+<p class="lead">There are things I should have said sooner.<br>This is my attempt.</p>
+<button class="primary" id="start">Read my heart 🌹</button>
+<div class="counter"><div class="counter-label">seconds since I started missing you</div><div class="counter-num" id="seconds">0</div></div>
+</div></section>
+
+<section class="screen"><div class="content">
+<h2>Everything I never said</h2><p class="sub">Scroll a little. Let it settle in.</p>
+<div class="cards">
+<article class="card"><div class="quote">I know I hurt you.</div><p>And I hate that I did. You never deserved to feel that pain from me.</p></article>
+<article class="card"><div class="quote">You deserved better from me.</div><p>Better patience. Better honesty. Better love. I'm sorry.</p></article>
+<article class="card"><div class="quote">Even after every fight, my heart still chooses you.</div><p>That part has never been in question. Not once.</p></article>
+<article class="card"><div class="quote">I miss us.</div><p>The late nights. The laughing at nothing. The version of us that felt safe.</p></article>
+<article class="card"><div class="quote">You are still my favourite person.</div><p>That hasn't changed.</p></article>
+<article class="card"><div class="quote">I'm sorry for the pain I caused.</div><p>You deserved softness, always.</p></article>
+<article class="card"><div class="quote">I would still choose you in every universe.</div><p>Every single one. Without hesitation.</p></article>
+<article class="card"><div class="quote">Please don't let this be our ending.</div><p>We are worth more than this silence.</p></article>
+</div>
+<div class="note"><p>I am genuinely sorry for the ways I hurt you. I hope one day you can forgive me. 🥺🫶</p></div>
+<button class="primary next">See what happens... 🌸</button>
+</div></section>
+
+<section class="screen"><div class="content">
+<div class="meter-card">
+<div class="eyebrow">✦ Completely scientific ✦</div>
+<div class="meter-title">The Forgiveness Meter™</div>
+<div class="meter-desc">Advanced AI is calculating exactly how much you deserve to forgive me right now...</div>
+<div class="percent" id="percent">0%</div>
+<div class="bar"><div class="fill" id="fill"></div></div>
+<div class="status" id="status">Initialising quantum love sensors...</div>
+<div class="result" id="result"><div class="broken">💔</div><h3>Cuteness Meter Broken</h3><p>You are officially 120% more cute than anyone else in the universe.</p><button class="primary love">I Love You 🌹</button></div>
+</div></div></section>
+</div>
+<div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
+</div>
+
+<script>
+const screens=document.getElementById('screens');
+const dots=[...document.querySelectorAll('.dot')];
+let page=0, meterStarted=false;
+const song=document.getElementById('song'), music=document.getElementById('music');
+song.volume=0;
+
+// Try to begin at 00:37 as soon as the site opens. Browsers may block
+// autoplay with sound; in that case the first click anywhere starts it.
+window.addEventListener('load',()=>{
+  playFrom37();
+  const unlock=()=>{ if(song.paused) playFrom37(); window.removeEventListener('pointerdown',unlock); window.removeEventListener('keydown',unlock); };
+  window.addEventListener('pointerdown',unlock,{once:true});
+  window.addEventListener('keydown',unlock,{once:true});
+});
+
+function go(n){page=Math.max(0,Math.min(2,n));screens.style.transform=`translateX(-${page*100}%)`;dots.forEach((d,i)=>d.classList.toggle('active',i===page));if(page===2)meter();}
+async function playFrom37(){
+  try{
+    // Wait for metadata before seeking, then start the song at 00:37.
+    if(song.readyState<1){
+      await new Promise(resolve=>song.addEventListener('loadedmetadata',resolve,{once:true}));
+    }
+    const start=37;
+    song.currentTime=start;
+    song.volume=0;
+    await song.play();
+    music.textContent='🔊';music.title='Pause music';
+
+    // Smooth fade-up from silence to 30% volume over 3 seconds.
+    clearInterval(window.volumeFade);
+    let v=0;
+    window.volumeFade=setInterval(()=>{
+      v=Math.min(0.3,v+0.3/30);
+      song.volume=v;
+      if(v>=0.4) clearInterval(window.volumeFade);
+    },100);
+  }catch(e){
+    console.error(e);
+    music.textContent='▶';music.title='Play music';
+  }
+}
+function pause(){clearInterval(window.volumeFade);song.pause();song.volume=0.3;music.textContent='♫';music.title='Play music';}
+document.getElementById('start').addEventListener('click',()=>{go(1);playFrom37();});
+document.querySelector('.next').addEventListener('click',()=>go(2));
+music.addEventListener('click',()=>song.paused?playFrom37():pause());
+
+let t0=Date.now();setInterval(()=>document.getElementById('seconds').textContent=Math.floor((Date.now()-t0)/1000),1000);
+
+function meter(){
+ if(meterStarted)return;meterStarted=true;
+ const vals=[[12,'Scanning apology levels…'],[29,'Checking emotional damage…'],[47,'Consulting the relationship database…'],[66,'Measuring remaining love…'],[82,'Warning: unusually high levels detected…'],[96,'Finalising quantum love calculation…'],[100,'ERROR: TOO MUCH LOVE DETECTED']];
+ let i=0;
+ function step(){
+  const [v,s]=vals[i++];document.getElementById('fill').style.width=v+'%';document.getElementById('percent').textContent=v+'%';document.getElementById('status').textContent=s;
+  if(i<vals.length)setTimeout(step,650);else setTimeout(()=>{document.getElementById('percent').textContent='???%';document.getElementById('status').textContent='System overload • the universe cannot process this much cuteness.';document.getElementById('result').classList.add('show')},900);
+ }
+ setTimeout(step,350);
+}
+document.querySelector('.love').onclick=e=>e.target.textContent='Forever & Always ❤️';
+</script>
+</body>
+</html>

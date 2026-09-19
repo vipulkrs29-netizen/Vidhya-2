@@ -1,0 +1,1 @@
+Open index.html. The included song starts at 00:00 after the visitor taps Read my heart, with a 3-second fade-up to 30% volume. The second page is vertically scrollable and responsive. Keep index.html and the assets folder together when hosting.
